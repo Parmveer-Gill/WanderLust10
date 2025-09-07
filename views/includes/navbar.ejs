@@ -1,0 +1,78 @@
+<style>
+  #explore {
+    display: inline;
+  }
+
+  #search {
+    margin-right: 38rem;
+  }
+
+  .btn-search {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem ;/*clockwise*/
+  }
+
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: #fff;
+  }
+
+  .btn-search i {
+    display: inline;
+    margin-right: 0.6rem;
+  }
+  .search-input{
+    border-radius: 25px;
+    padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+  }
+</style>
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 " id="explore">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">Explore</a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="navbar-nav ms-auto" id="search">
+      <form class="d-flex">
+        <input class="form-control me-2 search-input" type="search" placeholder="Search Destinations" >
+        <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+      </form>
+    </div>
+    <div class="ms-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"> <a href="/listings/new" class="nav-link">AirBnb Your Home</a>
+        </li>
+        <% if(!currUser) {%>
+          <!-- this means user is not logged in , show him both buttons , signup ala and login ala [currUser came from req.locals ala middleware]-->
+
+          <li class="nav-item">
+            <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><b>Login</b></a>
+          </li>
+          <% } %>
+            <% if(currUser) {%>
+              <li class="nav-item">
+                <a href="/logout" class="nav-link"><b>Log Out</b></a>
+              </li>
+              <% } %>
+      </ul>
+
+    </div>
+
+
+  </div>
+</nav>

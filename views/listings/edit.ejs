@@ -1,0 +1,62 @@
+<% layout("/layouts/boilerplate") %>
+    <!-- The above line means the content written in body of layouts/boilerplate.ejs will be display on currnet eje file -->
+
+    <body>
+        <div class="row">
+            <div class="col-8 offset-2">
+
+       
+        <h3>EDIT THIS LISTING</h3>
+        <form action="/listings/<%=listing._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="listing[title]" value="<%=listing.title %>" class="form-control" required><br><br>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <br>
+                <textarea name="listing[description]" class="form-control" required><%= listing.description %>  ></textarea><br><br>
+            </div>
+
+            <div class="mb-3">
+                Original listing image : <br>
+               <img src="<%= origImgUrl %>" alt=""><br><br>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" name="listing[image]" value="<%=listing.image %>"  class="form-control" ><br><br>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price
+                </label>
+                <input type="number" name="listing[price]" value="<%=listing.price %>"  class="form-control" required><br><br>
+
+            </div>
+
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location
+                </label>
+
+
+                <input type="text" name="listing[location]" value="<%=listing.location %>"  class="form-control" required><br><br>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="country" class="form-label">Country
+                </label>
+                <input type="text" name="listing[country]" value="<%=listing.country %>"  class="form-control" required><br>
+            </div>
+
+            <button class="edit-btn btn btn-dark">EDIT</button>
+        </form><br>
+        <button><a href="/listings" class="go-back-btn btn btn-dark">Go Back</a></button><br><br>
+    </div>
+</div>
+    </body>
+       <script src="/js/script.js"></script>

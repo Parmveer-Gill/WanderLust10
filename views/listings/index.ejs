@@ -1,0 +1,137 @@
+<% layout("/layouts/boilerplate") %>
+  <!-- The above line means the content written in body of layouts/boilerplate.ejs will be display on current ejs file -->
+  <style>
+    .filter {
+      margin-top: 2rem;
+      margin-right: 2rem;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .filter:hover {
+      opacity: 1;
+      padding: 0.08rem;
+      cursor: pointer;
+    }
+
+    #filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+    }
+
+    .filter p {
+      font-size: 0.9rem;
+    }
+    .tax-toggle{
+      margin-top: 1rem;
+      margin-left: 8rem;
+      border: 0.8px solid gray;
+      border-radius: 1rem;
+      /* height:2.1rem ; */
+      padding: 0.8rem;
+    }
+    .tax-info{
+      display: none;/* it means item will vansih + space taken by it will also get vanished */
+      
+      /*visibility: hidden; means t means item will vansih + space taken by it will not get vanished */
+    }
+  </style>
+
+  <body>
+    <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Pools</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach</p>
+      </div>
+      <div class="tax-toggle">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Display Total After Taxes</label>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+      <% for( let l of allListings){%>
+        <a href="/listings/<%= l._id %>" class="listing-link">
+          <div class="card col listing-card">
+            <img class="card-img-top"
+              src="<%= l.image.url || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c' %>"
+              alt="listing_image" style="height:20rem">
+
+            <div class="card-img-overlay"></div>
+
+            <div class="card-body">
+              <p class="card-text">
+                <b>
+                  <%= l.title %> <br>
+                </b>
+
+                &#8377; <%= l.price.toLocaleString("en-IN") %>
+                <i class="tax-info">&nbsp;&nbsp; +18% GST</i>
+
+
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <%}%>
+    </div>
+  </body>
+  <script>
+    let priceToggle = document.getElementById("flexSwitchCheckDefault");
+    priceToggle.addEventListener("click",() =>{
+      let tax = document.getElementsByClassName("tax-info");//class is used as we are doing it for all listings
+      for(i of tax){
+
+        //below we made toggle logic
+       if( i.style.display != "inline"){
+         i.style.display = "inline";
+       }
+       else{
+         i.style.display = "none";
+       }
+       
+      }
+    })
+  </script>

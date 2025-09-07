@@ -1,0 +1,72 @@
+<% layout("/layouts/boilerplate") %>
+    <!-- The above line means the content written in body of layouts/boilerplate.ejs will be display on currnet eje file -->
+
+    <body>
+        <br><br>
+
+        <div class="row">
+
+            <div class="col-8 offset-2">
+                <!-- it means upto 8 spaces (from total 12 cols)of col will be taken and offset means space from left side-->
+                <h3>CREATE A NEW LISTING</h3>
+                <!-- enctype="multipart/form-data" is used so our form can send files to DB, not only raw data -->
+                <form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div>
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="listing[title]" placeholder="Enter Title" class="form-control"
+                            required>
+                        <div class="valid-feedback">Title Looks Good!</div>
+                        <br><br>
+
+                    </div>
+
+                    <div>
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" placeholder="Enter Description" class="form-control"
+                            required></textarea>
+                        <div class="invalid-feedback">Please Enter a Short Description!</div>
+                        <br><br>
+
+                    </div>
+
+                    <!-- <div>
+                        <label for="image" class="form-label">Image URL</label>
+                        <input type="text" name="listing[image]" placeholder="Enter Image URL" class="form-control">
+                        <br><br>
+                    </div> -->
+                    <div>
+                        <label for="image" class="form-label">Upload Listing Image</label>
+                        <input type="file" name="listing[image]" class="form-control" required>
+                        <br><br>
+                    </div>
+                    <div>
+                        <label for="price" class="form-label ">Price</label>
+                        <input name="listing[price]" placeholder="Enter Price" class="form-control" required>
+                        <div class="invalid-feedback">Please Enter a Valid Price!</div><br><br>
+
+                    </div>
+                    <div>
+                        <label for="country" class="form-label ">Country</label>
+                        <input type="text" name="listing[country]" placeholder="Like Argentina" class="form-control"
+                            required>
+                        <div class="invalid-feedback">Please Enter a Country!</div><br><br>
+                    </div>
+
+
+                    <div>
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" placeholder="Enter Location" class="form-control"
+                            required>
+                        <div class="invalid-feedback">Please Enter a Valid Price!</div><br><br>
+                    </div>
+
+
+
+
+                    <button class="btn btn-dark add-btn">ADD</button><br><br>
+
+
+                </form>
+            </div>
+        </div>
+    </body>
