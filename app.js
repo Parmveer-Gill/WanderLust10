@@ -107,9 +107,13 @@ app.use((req,res,next)=> {
 
 //THE BELOW LINE help us to use the all routes from listing.js form routes folder, we have written the common starting prefix as /listings as it is common in all routes of listing.js
 //BY WRTING THIS COMMON /listing , there is no need to write /listing in routes folder again ,express will identify itself
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app.use("/listings", listingRouter);
 
-//Doing same with review ala 
+//Doing same with review ala a
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
